@@ -1,0 +1,41 @@
+-- ============================================================================
+-- DATABASE SCHEMA — Study Room Reservation System
+-- Owned by: PERSON 1 (Database + App Infrastructure)
+-- ============================================================================
+-- Responsibilities (Page 1):
+-- 1. Design schema.sql
+-- 2. Create all required tables:
+--    - rooms (e.g., id TEXT PRIMARY KEY, name TEXT, capacity INTEGER, location TEXT, ...)
+--    - reservations (e.g., id TEXT PRIMARY KEY, room_id TEXT, date TEXT, start_time TEXT, end_time TEXT, status TEXT, created_at TEXT, ...)
+--    - idempotency_keys (e.g., key TEXT PRIMARY KEY, request_hash TEXT, response_code INTEGER, response_body TEXT, created_at TEXT, expires_at TEXT)
+-- 3. Ensure DB can be created from empty state:
+--    - Use CREATE TABLE IF NOT EXISTS
+--    - Use FOREIGN KEY constraints where appropriate
+-- 4. Freeze table structure once created so P2 and P3 can build store layers against it.
+-- ============================================================================
+
+-- TODO (Person 1): Implement table definitions below
+
+-- 1. Rooms Table
+-- CREATE TABLE IF NOT EXISTS rooms (
+--     id TEXT PRIMARY KEY,
+--     ...
+-- );
+
+-- 2. Reservations Table
+-- CREATE TABLE IF NOT EXISTS reservations (
+--     id TEXT PRIMARY KEY,
+--     room_id TEXT NOT NULL,
+--     ...
+--     FOREIGN KEY (room_id) REFERENCES rooms(id)
+-- );
+
+-- 3. Idempotency Key Table (Required for Person 4 / Grader check)
+-- CREATE TABLE IF NOT EXISTS idempotency_keys (
+--     key TEXT PRIMARY KEY,
+--     request_hash TEXT NOT NULL,
+--     response_status INTEGER NOT NULL,
+--     response_body TEXT NOT NULL,
+--     created_at TEXT NOT NULL,
+--     expires_at TEXT NOT NULL
+-- );

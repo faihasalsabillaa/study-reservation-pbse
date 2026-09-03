@@ -1,0 +1,39 @@
+{
+  "name": "study-reservation-service",
+  "version": "0.1.0",
+  "description": "Backend service for Study Room Reservation System (PBSE Week 3)",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "test:contract": "jest tests/contract"
+  },
+  "keywords": [
+    "pbse",
+    "contract-first",
+    "express",
+    "study-reservation"
+  ],
+  "author": "PBSE Team",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "rootDir": "..",
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js"
+    ],
+    "passWithNoTests": true
+  }
+}
