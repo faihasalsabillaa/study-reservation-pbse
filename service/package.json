@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
+    "db:init": "node db/init.js",
     "test": "jest",
     "test:contract": "jest tests/contract"
   },
@@ -18,15 +19,15 @@
   "author": "PBSE Team",
   "license": "ISC",
   "dependencies": {
-    "better-sqlite3": "^11.8.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "better-sqlite3": "^11.10.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "nodemon": "^3.1.9",
-    "supertest": "^7.0.0"
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
   },
   "jest": {
     "testEnvironment": "node",

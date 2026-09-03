@@ -16,7 +16,7 @@ This directory contains the backend implementation for the Study Room Reservatio
 
 | Method | Path | Operation ID | Owner | Status | Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `GET` | `/health` | `getHealth` | **P1** | `IN PROGRESS` | Server infrastructure & health check |
+| `GET` | `/health` | `getHealth` | **P1** | `DONE` | Server infrastructure & health check — verified `200`, no DB dependency |
 | `GET` | `/v1/rooms` | `listRooms` | **P2** | `MOCK` | Collection read, returns `200 + []` if empty |
 | `GET` | `/v1/rooms/{roomId}` | `getRoom` | **P2** | `MOCK` | Single entity read; malformed ID -> 400 |
 | `GET` | `/v1/reservations` | `listReservations` | **P3** | `MOCK` | Collection read with status filter & pagination |
