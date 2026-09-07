@@ -1,6 +1,6 @@
 # Study Room Reservation System (PBSE)
 
-A contract-first study room reservation backend system built for Platform-Based Software Engineering (PBSE).
+A contract-first study room reservation backend system built for Platform-Based Software Engineering (PBSE)
 
 ---
 
