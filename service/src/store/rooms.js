@@ -14,6 +14,40 @@
 // TODO (Person 2): Implement database operations for rooms
 // e.g., findAllRooms(filters), findRoomById(id)
 
+const path = require('path');
+const Database = require('better-sqlite3');
+
+const configuredPath = process.env.DATABASE_PATH;
+
+const dbPath = path.isAbsolute(configuredPath)
+  ? configuredPath
+  : path.join(__dirname, '..', '..', configuredPath);
+
+const db = new Database(dbPath);
+
+db.pragma('foreign_keys = ON');
+
+function findAllRooms() {
+  return db
+    .prepare(`
+      SELECT id, name, capacity, location, created_at
+      FROM rooms
+      ORDER BY created_at ASC
+    `)
+    .all();
+}
+
+function findRoomById(id) {
+  return db
+    .prepare(`
+      SELECT id, name, capacity, location, created_at
+      FROM rooms
+      WHERE id = ?
+    `)
+    .get(id);
+}
+
 module.exports = {
-  // export store functions here
+  findAllRooms,
+  findRoomById
 };

@@ -83,9 +83,10 @@ app.get('/health', (req, res) => {
 // Route Registrations (assembly — connect after P2/P3 deliver routers)
 // ----------------------------------------------------------------------------
 // const roomsRouter = require('./routes/rooms');
-// const reservationsRouter = require('./routes/reservations');
 // app.use('/v1/rooms', roomsRouter);
-// app.use('/v1/reservations', reservationsRouter);
+
+const reservationsRouter = require('./routes/reservations');
+app.use('/v1/reservations', reservationsRouter);
 
 app.use((req, res) => {
   res.status(404).json({

@@ -54,7 +54,53 @@ tags:
   - name: Reservations
     description: Library study room reservations.
 
+  - name: Rooms
+    description: Library study rooms.
+
 paths:
+  /rooms:
+   get:
+    operationId: listRooms
+    summary: List study rooms
+    tags: [Rooms]
+    description: Lists all study rooms available in the library.
+    responses:
+      '200':
+        description: A collection of study rooms.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Room'
+      '400':
+        $ref: '#/components/responses/BadRequest'
+
+  /rooms/{roomId}:
+    parameters:
+      - name: roomId
+        in: path
+        required: true
+        description: Opaque, server-generated study room identifier.
+        schema:
+          type: string
+          pattern: '^rm_[A-Za-z0-9]{3,}$'
+        example: rm_1a2B3cD
+    get:
+      operationId: getRoom
+      summary: Fetch one study room
+      tags: [Rooms]
+      responses:
+        '200':
+          description: The study room.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
 
   # -------------------------------------------------------------------
   # A collection GET with a filter parameter. Required for L2.
@@ -240,6 +286,30 @@ paths:
 components:
 
   schemas:
+    Room:
+      type: object
+      required: [id, name, capacity, location, createdAt]
+      properties:
+        id:
+          type: string
+          pattern: '^rm_[A-Za-z0-9]{3,}$'
+          description: Opaque, server-generated, stable forever.
+          example: rm_1a2B3cD
+        name:
+          type: string
+          example: Discussion Room 1
+        capacity:
+          type: integer
+          minimum: 1
+          example: 6
+        location:
+          type: string
+          example: Library 2nd Floor
+        createdAt:
+          type: string
+          format: date-time
+          description: RFC 3339 with an explicit offset.
+          example: '2026-08-30T10:00:00+07:00'
 
     # ---------------------------------------------------------------
     # TODO: replace with your resources from Worksheet W1. You need at

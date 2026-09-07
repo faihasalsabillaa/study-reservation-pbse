@@ -13,6 +13,16 @@
 // TODO (Person 2): Implement representation transformer
 // function toRoomRepresentation(dbRow) { ... }
 
+function toRoomRepresentation(dbRow) {
+  return {
+    id: dbRow.id,
+    name: dbRow.name,
+    capacity: dbRow.capacity,
+    location: dbRow.location,
+    createdAt: dbRow.created_at
+  };
+}
+
 module.exports = {
-  // export representation function
+  toRoomRepresentation
 };

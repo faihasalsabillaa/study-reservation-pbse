@@ -15,6 +15,32 @@
 // TODO (Person 3): Implement reservation representation mapping
 // function toReservationRepresentation(dbRow) { ... }
 
+function toReservationRepresentation(dbRow) {
+  if (!dbRow) {
+    return null;
+  }
+
+  return {
+    id: dbRow.id,
+    roomId: dbRow.room_id,
+    status: dbRow.status,
+    createdAt: dbRow.created_at
+  };
+}
+
+function toCancellationRepresentation(dbRow) {
+  if (!dbRow) {
+    return null;
+  }
+
+  return {
+    reservationId: dbRow.id,
+    reason: dbRow.cancel_reason,
+    cancelledAt: dbRow.cancelled_at
+  };
+}
+
 module.exports = {
-  // export representation function
+  toReservationRepresentation,
+  toCancellationRepresentation
 };
